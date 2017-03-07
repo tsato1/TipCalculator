@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var percentageToggle: UISegmentedControl!
+    let limitLength = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        billField.delegate = self
+        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,12 +33,18 @@ class ViewController: UIViewController {
     
     @IBAction func calculateTip(_ sender: AnyObject) {
         let percentages = [0.15, 0.18, 0.20]
-        
-        let bill = Double(billField.text!) ?? 0
+        let billText = billField.text!
+        let bill = Double(billText) ?? 0
         let tip = bill * percentages[percentageToggle.selectedSegmentIndex]
         let total = bill + tip
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= limitLength
     }
     
 }
