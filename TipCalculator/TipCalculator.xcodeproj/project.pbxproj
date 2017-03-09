@@ -16,6 +16,7 @@
 		3827D8771E6B4AFF00A1EE32 /* TipCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D8761E6B4AFF00A1EE32 /* TipCalculatorUITests.swift */; };
 		3830C1A41E7128B300ECE2BC /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */; };
 		3830C1A51E7128B300ECE2BC /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */; };
+		3830C1A71E71300300ECE2BC /* MyTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830C1A61E71300300ECE2BC /* MyTableViewCellModel.swift */; };
 		384A6CAE1E6B9AE000BEAC6E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3827D8781E6B4AFF00A1EE32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		3830C1A61E71300300ECE2BC /* MyTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCellModel.swift; sourceTree = "<group>"; };
 		384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				3827D8581E6B4AFF00A1EE32 /* ViewController.swift */,
 				3827D85A1E6B4AFF00A1EE32 /* Main.storyboard */,
 				384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */,
+				3830C1A61E71300300ECE2BC /* MyTableViewCellModel.swift */,
 				3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */,
 				3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */,
 				3827D85D1E6B4AFF00A1EE32 /* Assets.xcassets */,
@@ -273,6 +276,7 @@
 				3830C1A41E7128B300ECE2BC /* MyTableViewCell.swift in Sources */,
 				3827D8571E6B4AFF00A1EE32 /* AppDelegate.swift in Sources */,
 				384A6CAE1E6B9AE000BEAC6E /* SettingsViewController.swift in Sources */,
+				3830C1A71E71300300ECE2BC /* MyTableViewCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

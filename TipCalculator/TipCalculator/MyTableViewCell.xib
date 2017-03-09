@@ -36,6 +36,10 @@
                     <constraint firstItem="gSt-Hr-Lj1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wVF-nF-0Nb"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cellLabel" destination="gSt-Hr-Lj1" id="3We-4K-oeY"/>
+                <outlet property="registerSwitch" destination="2ng-nF-uYh" id="8HT-1r-Xl4"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

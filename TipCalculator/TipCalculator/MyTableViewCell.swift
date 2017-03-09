@@ -7,11 +7,15 @@
 //
 
 import UIKit
+protocol MyTalbeViewCellDelegate {
+    func didTappSwitch(cell: MyTableViewCell)
+}
 
 class MyTableViewCell: UITableViewCell {
-
-    @IBAction func switchValueChanged(_ sender: AnyObject) {
-    }
+    @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var registerSwitch: UISwitch!
+    
+    var delegate: MyTalbeViewCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +28,12 @@ class MyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupWithModel(model: MyTalbeViewCellModel) {
+        cellLabel.text = model.label
+        registerSwitch.setOn(model.turnedON, animated: false)
+    }
+    
+    @IBAction func switchValueChanged(_ sender: AnyObject) {
+        delegate.didTappSwitch(cell: self)
+    }
 }
