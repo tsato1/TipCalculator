@@ -14,7 +14,8 @@
 		3827D8611E6B4AFF00A1EE32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3827D85F1E6B4AFF00A1EE32 /* LaunchScreen.storyboard */; };
 		3827D86C1E6B4AFF00A1EE32 /* TipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D86B1E6B4AFF00A1EE32 /* TipCalculatorTests.swift */; };
 		3827D8771E6B4AFF00A1EE32 /* TipCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D8761E6B4AFF00A1EE32 /* TipCalculatorUITests.swift */; };
-		382803FC1E6E833A0074D067 /* MyTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382803FB1E6E833A0074D067 /* MyTableCellTableViewCell.swift */; };
+		3830C1A41E7128B300ECE2BC /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */; };
+		3830C1A51E7128B300ECE2BC /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */; };
 		384A6CAE1E6B9AE000BEAC6E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +50,8 @@
 		3827D8721E6B4AFF00A1EE32 /* TipCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3827D8761E6B4AFF00A1EE32 /* TipCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorUITests.swift; sourceTree = "<group>"; };
 		3827D8781E6B4AFF00A1EE32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		382803FB1E6E833A0074D067 /* MyTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTableCellTableViewCell.swift; path = ../MyTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,10 +107,11 @@
 				3827D8581E6B4AFF00A1EE32 /* ViewController.swift */,
 				3827D85A1E6B4AFF00A1EE32 /* Main.storyboard */,
 				384A6CAD1E6B9AE000BEAC6E /* SettingsViewController.swift */,
+				3830C1A21E7128B300ECE2BC /* MyTableViewCell.swift */,
+				3830C1A31E7128B300ECE2BC /* MyTableViewCell.xib */,
 				3827D85D1E6B4AFF00A1EE32 /* Assets.xcassets */,
 				3827D85F1E6B4AFF00A1EE32 /* LaunchScreen.storyboard */,
 				3827D8621E6B4AFF00A1EE32 /* Info.plist */,
-				382803FB1E6E833A0074D067 /* MyTableCellTableViewCell.swift */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3827D8611E6B4AFF00A1EE32 /* LaunchScreen.storyboard in Resources */,
+				3830C1A51E7128B300ECE2BC /* MyTableViewCell.xib in Resources */,
 				3827D85E1E6B4AFF00A1EE32 /* Assets.xcassets in Resources */,
 				3827D85C1E6B4AFF00A1EE32 /* Main.storyboard in Resources */,
 			);
@@ -266,8 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3827D8591E6B4AFF00A1EE32 /* ViewController.swift in Sources */,
+				3830C1A41E7128B300ECE2BC /* MyTableViewCell.swift in Sources */,
 				3827D8571E6B4AFF00A1EE32 /* AppDelegate.swift in Sources */,
-				382803FC1E6E833A0074D067 /* MyTableCellTableViewCell.swift in Sources */,
 				384A6CAE1E6B9AE000BEAC6E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

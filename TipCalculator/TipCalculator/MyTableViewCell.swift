@@ -1,15 +1,18 @@
 //
-//  MyTableCellTableViewCell.swift
+//  MyTableViewCell.swift
 //  TipCalculator
 //
-//  Created by Takahide Sato on 3/6/17.
+//  Created by Takahide Sato on 3/8/17.
 //  Copyright © 2017 GreenTSato. All rights reserved.
 //
 
 import UIKit
 
-class MyTableCellTableViewCell: UITableViewCell {
+class MyTableViewCell: UITableViewCell {
 
+    @IBAction func switchValueChanged(_ sender: AnyObject) {
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +23,5 @@ class MyTableCellTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
