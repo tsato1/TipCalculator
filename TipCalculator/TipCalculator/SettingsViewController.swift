@@ -9,8 +9,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    let percentages = ["10%", "12%", "13%", "15%", "17%", "18%", "20%", "22%", "23%", "25%"]
-    let numPeople = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let allPercentages = ["10%", "12%", "13%", "15%", "17%", "18%", "20%", "22%", "23%", "25%"]
+    let allNumPeople = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let pickedPercentageIndeces = [3, 5, 6]
+    let pickedNumPeopleIndeces = [0, 1, 2, 3, 4]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,9 +27,9 @@ class SettingsViewController: UIViewController {
     }
     
     func fillDataArray() {
-        for index in 0..<50 {
+        let count = allPercentages.count + allNumPeople.count
+        for index in 0..<count {
             let newModel = MyTalbeViewCellModel();
-            newModel.label = "aaa"
             newModel.turnedON = false
             feedModelArray.append(newModel)
         }
@@ -36,42 +38,55 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return percentages.count
-//        } else {
-//            return numPeople.count
-//        }
-        return 50
+        if section == 0 {
+            return allPercentages.count
+        } else {
+            return allNumPeople.count
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell()
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCustomCell") as! MyTableViewCell
         cell.setupWithModel(model: feedModelArray[indexPath.row])
         cell.delegate = self
         
-//        if indexPath.section == 0 {
-//            let row = percentages[indexPath.row]
-//            cell.textLabel?.text = row
-//        } else {
-//            let row = numPeople[indexPath.row]
-//            cell.textLabel?.text = row
-//        }
+        if indexPath.section == 0 {
+            let row = allPercentages[indexPath.row]
+            cell.textLabel?.text = row
+            if indexPath.row == pickedPercentageIndeces[0] ||
+                indexPath.row == pickedPercentageIndeces[1] ||
+                indexPath.row == pickedPercentageIndeces[2] {
+                cell.registerSwitch.isOn = true
+            } else {
+                cell.registerSwitch.isOn = false
+            }
+        } else {
+            let row = allNumPeople[indexPath.row]
+            if indexPath.row == pickedNumPeopleIndeces[0] ||
+                indexPath.row == pickedNumPeopleIndeces[1] ||
+                indexPath.row == pickedNumPeopleIndeces[2] ||
+                indexPath.row == pickedNumPeopleIndeces[3] ||
+                indexPath.row == pickedNumPeopleIndeces[4] {
+                cell.registerSwitch.isOn = true
+            } else {
+                cell.registerSwitch.isOn = false
+            }
+            cell.textLabel?.text = row
+        }
         
         return cell
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "Percentages"
-//        } else {
-//            return "Number of People"
-//        }
-        return "OK"
+        if section == 0 {
+            return "Percentages"
+        } else {
+            return "Number of People"
+        }
     }
 }
 

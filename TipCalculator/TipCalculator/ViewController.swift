@@ -20,6 +20,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         billField.delegate = self
         billField.becomeFirstResponder()
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            let defaults = UserDefaults.standard
+            let stringValue = defaults.object(forKey: "some_key_that_you_choose") as! String
+            let intValue = defaults.integer(forKey: "another_key_that_you_choose")
+            print("HELLO " + stringValue + " " + String(intValue))
+        }
+        else {
+            
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
