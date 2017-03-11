@@ -46,16 +46,16 @@
                                         <frame key="frameInset" minY="100" width="343" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="15%"/>
-                                            <segment title="18%"/>
-                                            <segment title="20%"/>
+                                            <segment title=""/>
+                                            <segment title=""/>
+                                            <segment title=""/>
                                         </segments>
                                         <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <connections>
                                             <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="Snm-3R-2Lt"/>
                                         </connections>
                                     </segmentedControl>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="94J-Ed-ao1">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="94J-Ed-ao1" userLabel="NumPeople Toggle">
                                         <frame key="frameInset" minY="208" width="343" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
@@ -108,6 +108,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="gv4-Pg-yxe" id="gLn-Os-KgV"/>
+                        <outlet property="numPeopleToggle" destination="94J-Ed-ao1" id="IZZ-0c-8eG"/>
                         <outlet property="percentageToggle" destination="MCQ-0z-KUo" id="Hni-fD-F8C"/>
                         <outlet property="tipLabel" destination="7up-DN-ULR" id="sNg-DD-g76"/>
                         <outlet property="totalLabel" destination="a0C-LR-eg5" id="38E-we-wvJ"/>

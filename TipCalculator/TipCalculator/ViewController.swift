@@ -14,30 +14,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var percentageToggle: UISegmentedControl!
+    @IBOutlet weak var numPeopleToggle: UISegmentedControl!
+    
     let limitLength = 10
+    
+    var pickedPercentages = ["15%", "18%", "20%"]
+    var pickedNumPeople = ["1", "2", "3", "4", "5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         billField.delegate = self
         billField.becomeFirstResponder()
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            let defaults = UserDefaults.standard
-            let stringValue = defaults.object(forKey: "some_key_that_you_choose") as! String
-            let intValue = defaults.integer(forKey: "another_key_that_you_choose")
-            print("HELLO " + stringValue + " " + String(intValue))
-        }
-        else {
-            
-        }
-
-        
+        let settings = UserDefaults.standard
+        settings.register(defaults: ["percentages": pickedPercentages])
+        settings.register(defaults: ["numPeoples": pickedNumPeople])
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        
+        let settings = UserDefaults.standard
+        pickedPercentages = settings.array(forKey: "percentages") as! [String]
+        pickedNumPeople = settings.array(forKey: "numPeoples") as! [String]
+        
+        for i in 0..<pickedPercentages.count {
+            percentageToggle.setTitle(pickedPercentages[i], forSegmentAt: i)
+        }
+        for j in 0..<pickedNumPeople.count {
+            numPeopleToggle.setTitle(pickedNumPeople[j], forSegmentAt: j)
+        }
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
