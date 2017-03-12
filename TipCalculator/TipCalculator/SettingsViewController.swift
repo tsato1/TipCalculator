@@ -10,23 +10,32 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     lazy var mySections: [SectionData] = {
-        let allPercentages = SectionData(title: "Percentages", data: "10%", "12%", "13%", "15%", "17%", "18%", "20%", "22%", "23%", "25%")
+        let allPercentages = SectionData(title: "Percentages", data: "10", "12", "13", "15", "17", "18", "20", "22", "23", "25")
         let allNumPeople = SectionData(title: "Number of People", data: "1", "2", "3", "4", "5", "6", "7", "8", "9")
         return [allPercentages, allNumPeople]
     }()
-    var pickedPercentageIndeces = [3, 5, 6]
-    var pickedNumPeopleIndeces = [0, 1, 2, 3, 4]
+    var pickedPercentages = [15, 18, 20]
+    var pickedNumPeople = [1, 2, 3, 4, 5]
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var cancelButton : UIBarButtonItem?
+    var doneButton : UIBarButtonItem?
     
     var feedModelArray = [MyTalbeViewCellModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.register(UINib(nibName: "MyTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCustomCell")
         fillDataArray()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onCancelClick(sender:)))
+        doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(onDoneClick(sender:)))
+        self.navigationItem.setLeftBarButton(cancelButton, animated: true)
+        self.navigationItem.setRightBarButton(doneButton, animated: true)
     }
     
     func fillDataArray() {
@@ -39,10 +48,18 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
+        super.viewDidAppear(animated)
         let settings = UserDefaults.standard
-        pickedPercentageIndeces = settings.array(forKey: "percentageIndeces") as! [Int]
-        pickedNumPeopleIndeces = settings.array(forKey: "numPeopleIndeces") as! [Int]
+        pickedPercentages = settings.array(forKey: "percentages") as! [Int]
+        pickedNumPeople = settings.array(forKey: "numpeople") as! [Int]
+    }
+    
+    func onCancelClick(sender: UIBarButtonItem!) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func onDoneClick(sender: UIBarButtonItem!) {
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -61,22 +78,20 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.delegate = self
         
         let cellTitle = mySections[indexPath.section][indexPath.row]
-        cell.textLabel?.text = cellTitle
+        cell.textLabel?.text = String(cellTitle + "%")
         cell.registerSwitch.isOn = false
         
         if indexPath.section == 0 {
-            if indexPath.row == pickedPercentageIndeces[0] ||
-                indexPath.row == pickedPercentageIndeces[1] ||
-                indexPath.row == pickedPercentageIndeces[2] {
+            for index in 0..<pickedPercentages.count {
+                if Int(cellTitle) == pickedPercentages[index] {
                     cell.registerSwitch.isOn = true
+                }
             }
         } else {
-            if indexPath.row == pickedNumPeopleIndeces[0] ||
-                indexPath.row == pickedNumPeopleIndeces[1] ||
-                indexPath.row == pickedNumPeopleIndeces[2] ||
-                indexPath.row == pickedNumPeopleIndeces[3] ||
-                indexPath.row == pickedNumPeopleIndeces[4] {
+            for index in 0..<pickedNumPeople.count {
+                if Int(cellTitle) == pickedNumPeople[index] {
                     cell.registerSwitch.isOn = true
+                }
             }
         }
         
@@ -92,32 +107,31 @@ extension SettingsViewController: MyTalbeViewCellDelegate {
     func didTappSwitch(cell: MyTableViewCell) {
         let indexPath = tableView.indexPath(for: cell)
         feedModelArray[(indexPath?.row)!].turnedON = cell.registerSwitch.isOn
-
+        let cellTitle = mySections[(indexPath?.section)!][(indexPath?.row)!]
+        
         let settings = UserDefaults.standard
         
         if cell.registerSwitch.isOn == false {
             if indexPath?.section == 0 {
-                pickedPercentageIndeces.remove(at: 0)
-                settings.set(pickedPercentageIndeces, forKey: "percentageIndeces")
+                pickedPercentages.remove(at: 0)
+                settings.set(pickedPercentages, forKey: "percentages")
             } else {
-                pickedNumPeopleIndeces.remove(at: 0)
-                settings.set(pickedNumPeopleIndeces, forKey: "numPeopleIndeces")
+                pickedNumPeople.remove(at: 0)
+                settings.set(pickedNumPeople, forKey: "numpeople")
             }
         } else {
             if indexPath?.section == 0 {
-                pickedPercentageIndeces.append((indexPath?.row)!)
-                settings.set(pickedPercentageIndeces, forKey: "percentageIndeces")
+                pickedPercentages.append(Int(cellTitle)!)
+                settings.set(pickedPercentages, forKey: "percentages")
             } else {
-                pickedNumPeopleIndeces.append((indexPath?.row)!)
-                settings.set(pickedNumPeopleIndeces, forKey: "numPeopleIndeces")
+                pickedNumPeople.append(Int(cellTitle)!)
+                settings.set(pickedNumPeople, forKey: "numpeople")
             }
         }
         settings.synchronize()
         
-        print("indexPath.row=\(indexPath?.row)")
-        for index in 0..<pickedNumPeopleIndeces.count {
-            print("PickedNumPeopleIndeces["+String(index)+"="+"]" + String(pickedNumPeopleIndeces[index]))
-        }
+        print("\(pickedPercentages)")
+        print("\(pickedNumPeople)")
     }
 }
 
