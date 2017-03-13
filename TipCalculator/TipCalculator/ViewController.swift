@@ -30,13 +30,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let settings = UserDefaults.standard
         settings.register(defaults: ["percentages": pickedPercentages])
         settings.register(defaults: ["numpeople": pickedNumPeople])
-//        
+
+        /* uncomment and run when default value needs to be set */
 //        settings.set(pickedPercentages, forKey: "percentages")
 //        settings.set(pickedNumPeople, forKey: "numpeople")
         settings.synchronize()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let settings = UserDefaults.standard
         pickedPercentages = settings.array(forKey: "percentages") as! [Int]
@@ -48,6 +49,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         for j in 0..<pickedNumPeople.count {
             numPeopleToggle.setTitle(String(pickedNumPeople[j]), forSegmentAt: j)
         }
+        
+        pickedPercentages.sort()
+        pickedNumPeople.sort()
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
@@ -69,6 +73,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= limitLength
     }
-    
 }
 
