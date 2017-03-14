@@ -32,8 +32,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         settings.register(defaults: ["numpeople": pickedNumPeople])
 
         /* uncomment and run when default value needs to be set */
-//        settings.set(pickedPercentages, forKey: "percentages")
-//        settings.set(pickedNumPeople, forKey: "numpeople")
+        settings.set(pickedPercentages, forKey: "percentages")
+        settings.set(pickedNumPeople, forKey: "numpeople")
         settings.synchronize()
     }
     

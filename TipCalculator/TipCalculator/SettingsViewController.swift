@@ -9,8 +9,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    let WARNING_PERCENTAGE_COUNT = "Please select THREE Percentages"
-    let WARNING_NUMPEOPLE_COUNT = "Please select FIVE from Number Of People"
+    let WARNING_PERCENTAGE_COUNT = "Please select\nTHREE\nPercentages"
+    let WARNING_NUMPEOPLE_COUNT = "Please select\nFIVE\nNumber Of People"
     let PERCENTAGE_COUNT = 3
     let NUMPEOPLE_COUNT = 5
     var pickedPercentages = [15, 18, 20]
@@ -47,6 +47,9 @@ class SettingsViewController: UIViewController {
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         warningView.layer.cornerRadius = 5
+        tableView.layer.zPosition = 1
+        visualEffectView.layer.zPosition = 0
+        warningView.layer.zPosition = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +123,9 @@ class SettingsViewController: UIViewController {
             self.visualEffectView.effect = self.effect
             self.warningView.alpha = 1
             self.warningView.transform = CGAffineTransform.identity
+            self.tableView.layer.zPosition = 0
+            self.visualEffectView.layer.zPosition = 1
+            self.warningView.layer.zPosition = 2
         }
     }
     
@@ -128,6 +134,9 @@ class SettingsViewController: UIViewController {
             self.warningView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.warningView.alpha = 0
             self.visualEffectView.effect = nil
+            self.tableView.layer.zPosition = 1
+            self.visualEffectView.layer.zPosition = 0
+            self.warningView.layer.zPosition = 0
         }) {(Success: Bool) in
             self.warningView.removeFromSuperview()
         }
