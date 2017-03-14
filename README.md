@@ -4,7 +4,7 @@
 
 Submitted by: **Tak Sato**
 
-Time spent: **9** hours spent in total
+Time spent: **17** hours spent in total
 
 ## User Stories
 
