@@ -25,7 +25,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         billField.delegate = self
-        billField.becomeFirstResponder()
         
         let settings = UserDefaults.standard
         settings.register(defaults: ["percentages": pickedPercentages])
@@ -39,6 +38,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        billField.becomeFirstResponder()
+        billField.placeholder = "$"
+        
         let settings = UserDefaults.standard
         pickedPercentages = settings.array(forKey: "percentages") as! [Int]
         pickedNumPeople = settings.array(forKey: "numpeople") as! [Int]

@@ -9,8 +9,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    let WARNING_PERCENTAGE_COUNT = "Please select\nTHREE\nPercentages"
-    let WARNING_NUMPEOPLE_COUNT = "Please select\nFIVE\nNumber Of People"
+    let WARNING_PERCENTAGE_COUNT = "Please select\nTHREE\nPercentages!"
+    let WARNING_NUMPEOPLE_COUNT = "Please select\nFIVE\nNumber Of People!"
     let PERCENTAGE_COUNT = 3
     let NUMPEOPLE_COUNT = 5
     var pickedPercentages = [15, 18, 20]
