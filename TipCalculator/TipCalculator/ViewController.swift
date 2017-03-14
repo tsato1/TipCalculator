@@ -54,6 +54,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         pickedPercentages.sort()
         pickedNumPeople.sort()
+        
+        calculate()
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
@@ -61,6 +63,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func calculateTip(_ sender: AnyObject) {
+        calculate()
+    }
+    
+    func calculate() {
         let billText = billField.text!
         let bill = Double(billText) ?? 0
         let tip = bill / 100 * Double(pickedPercentages[percentageToggle.selectedSegmentIndex])
