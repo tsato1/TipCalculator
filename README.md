@@ -10,21 +10,26 @@ Time spent: **17** hours spent in total
 
 The following **required** functionality is complete:
 
-* [ ] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-* [ ] Settings page to change the default tip percentage.
+* [x] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
+* [x] Settings page to change the default tip percentage.
 
 The following **optional** features are implemented:
-* [ ] UI animations
+* [x] UI animations
+* [x] Using locale-specific currency and currency thousands separators.
+* [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
-- [ ] User can select tip percentages and number of people to choose from on the main page (UserDefaults)
+- [x] User can select the combination of tip percentages and number of people to choose from on the main page
+- [x] Thousand separator is implemented for textview
+- [x] Currency is corresponding to the user's locale
+- [x] User can use 'dot' for small amount of money
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src="http://i.imgur.com/H2e2moZ.gif" title="Video Walkthrough" width='' alt='Video Walkthrough' />
+<img src="http://i.imgur.com/jz3BPvM.gif" title="Video Walkthrough" width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
