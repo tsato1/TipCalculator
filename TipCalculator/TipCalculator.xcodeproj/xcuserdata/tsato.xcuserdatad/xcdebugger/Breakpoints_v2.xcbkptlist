@@ -279,7 +279,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipCalculator/ViewController.swift"
-            timestampString = "511516809.803324"
+            timestampString = "511599312.0716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -295,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipCalculator/ViewController.swift"
-            timestampString = "511516810.827382"
+            timestampString = "511599312.0716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -311,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TipCalculator/ViewController.swift"
-            timestampString = "511518087.881855"
+            timestampString = "511599638.100332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "applicationWillEnterForeground(_:)"
             landmarkType = "7">
          </BreakpointContent>

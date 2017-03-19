@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let numPeopleKey = "numpeople"
     let billAmountKey = "billamount"
     let limitLength = 7
+    let formatter = NumberFormatter();
     
     var pickedPercentages = [15, 18, 20]
     var pickedNumPeople = [1, 2, 3, 4, 5]
@@ -44,9 +45,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
-        billField.becomeFirstResponder()
-        billField.layer.cornerRadius = 8
-        billField.keyboardType = UIKeyboardType.decimalPad
+        formatter.numberStyle = .currency
+        formatter.locale = NSLocale.current
     }
     
     deinit {
@@ -55,19 +55,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         print("ViewController.swift: did enter foreground")
-        //billField.placeholder = "$"
-        billField.becomeFirstResponder()
-        billField.layer.cornerRadius = 8
-        billField.keyboardType = UIKeyboardType.decimalPad
+        
+        /*** timer for billfield ***/
+//        let settings = UserDefaults.standard
+//        stopTime = settings.object(forKey: stopTimeKey) as? Date
+//        if let time = stopTime {
+//            if time > Date() {
+//                billAmount = settings.integer(forKey: billAmountKey)
+//            } else {
+//                billAmount = 0
+//            }
+//        }
+//        stopTimer()
+//        billField.text = String(billAmount)
+        
+        calculate()
     }
     
     func applicationDidEnterBackground(_ aplication: UIApplication) {
         print("ViewController.swift: did enter background")
+        
+        /*** timer for billfield ***/
+//        UserDefaults.standard.set(billAmount, forKey: billAmountKey)
+//        let time = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
+//        startTimer(time!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("ViewController: viewWillAppear() called")
+        
+        billField.placeholder = String(formatter.currencySymbol)
+        billField.becomeFirstResponder()
+        billField.layer.cornerRadius = 8
+        billField.keyboardType = UIKeyboardType.decimalPad
         
         let settings = UserDefaults.standard
         pickedPercentages = settings.array(forKey: percentagesKey) as! [Int]
@@ -82,33 +103,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         pickedPercentages.sort()
         pickedNumPeople.sort()
         
-        stopTime = settings.object(forKey: stopTimeKey) as? Date
-        if let time = stopTime {
-            if time > Date() {
-                billAmount = settings.integer(forKey: billAmountKey)
-            } else {
-                billAmount = 0
-            }
-        }
-        stopTimer()
-        
-        billField.text = String(billAmount)
-        
         calculate()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        let settings = UserDefaults.standard
-        settings.set(billAmount, forKey: billAmountKey)
-        settings.synchronize()
-        
-        let time = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
-        startTimer(time!)
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
@@ -126,9 +121,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var total = bill + tip
         total = total / Double(pickedNumPeople[numPeopleToggle.selectedSegmentIndex])
         
-        let formatter = NumberFormatter();
-        formatter.numberStyle = .currency
-        formatter.locale = NSLocale.current
         let formattedTip = formatter.string(for: tip)
         let formattedTotal = formatter.string(for: total)
         
